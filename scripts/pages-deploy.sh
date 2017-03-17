@@ -3,8 +3,7 @@ DIR=$(dirname $0)
 
 cd $DIR/..
 
-if [[ $(git status -s) ]]
-then
+if [[ $(git status -s) ]]; then
 	echo "The working directory is dirty. Please commit any pending changes"
 	exit 1;
 fi
@@ -12,11 +11,9 @@ fi
 echo "Deleting old publications"
 rm -rf public
 mkdir public
-git workspace prune
-rm -rf .git/worktrees/public
 
 echo "Checking out gh-pages branch into public"
-git worktree add -B gh-pages public upstream/gh-pages
+git clone .git --branch gh-pages public
 
 echo "Removing exisiting files"
 rm -rf public/*

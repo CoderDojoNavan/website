@@ -27,4 +27,4 @@ hugo
 echo "Updating gh-pages branch"
 cd public && git add --all && git commit -m "Publishing to gh-pages"
 
-git push origin gh-pages
+git push origin gh-pages -f
